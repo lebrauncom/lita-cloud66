@@ -3,7 +3,7 @@ module Lita
     class Cloud66 < Handler
       config :redeployment_hook
 
-      route(/deploy production|redeploy production/i, :reply, command: false, help: {
+      route(/deploy production|redeploy production/i, :reply, command: false, restrict_to: :admins, help: {
         'deploy production' => 'Deploys the production server.',
         'redeploy production' => 'Redeploys the production server.'
       })
