@@ -3,13 +3,13 @@ module Lita
     class Cloud66 < Handler
       BASE_URL = 'https://hooks.cloud66.com/stacks/redeploy'
 
-      route(/deploy production|redeploy production/i, :deploy, command: false, help: {
+      route(/deploy production|redeploy production/i, :reply, command: false, help: {
         'deploy production' => 'Deploys the production server.',
         'redeploy production' => 'Redeploys the production server.'
       })
 
-      def deploy(response)
-        if deploy_server
+      def reply(response)
+        if deploy
           response.reply "Starting redeployment of production server"
         else
           response.reply "Error deploying the production server"
@@ -18,7 +18,7 @@ module Lita
 
       private
 
-        def deploy_server(server)
+        def deploy(server)
           true
         end
 
